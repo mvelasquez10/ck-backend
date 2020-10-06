@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CK.Repository\CK.Repository.csproj" />
+    <ProjectReference Include="..\CK.Rest.Common.Shared\CK.Rest.Common.Shared.csproj" />
+  </ItemGroup>
+
+  <Import Project="../quality.targets" />
+</Project>

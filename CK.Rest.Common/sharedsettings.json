@@ -1,0 +1,42 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "System": "Information",
+      "Microsoft": "Information"
+    },
+    "File": {
+      "IncludeScopes": true,
+      "BasePath": "Logs",
+      "FileAccessMode": "KeepOpenAndAutoFlush",
+      "FileEncodingName": "utf-8",
+      "CounterFormat": "0000",
+      "MaxFileSize": 5000000,
+      "LogLevel": {
+        "Default": "Debug",
+        "Microsoft.EntityFrameworkCore.Database.Command": "None"
+      },
+      "Files": [
+        {
+          "Path": "warn-err-<counter>.log",
+          "MinLevel": {
+            "Default": "Warning"
+          }
+        },
+        {
+          "Path": "default-<counter>.log",
+          "MinLevel": {
+            "Default": "Debug"
+          },
+          "MaxLevel": {
+            "Default": "Information"
+          }
+        }
+      ]
+    }
+  },
+  "Common": {
+    "Secret": "UkDww4hkFnc8EfWxVS1Z"
+  },
+  "SessionExpireInDays": 30
+}

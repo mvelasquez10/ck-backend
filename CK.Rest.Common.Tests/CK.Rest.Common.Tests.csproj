@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.1.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.1.0" />
+    <PackageReference Include="coverlet.collector" Version="1.2.0" />
+    <PackageReference Include="Moq" Version="4.14.7" />
+    <PackageReference Include="xunit.assert" Version="2.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CK.Rest.Common.Shared\CK.Rest.Common.Shared.csproj" />
+  </ItemGroup>
+  
+  <PropertyGroup Label="FineCodeCoverage">
+    <Enabled>
+      True
+    </Enabled>
+    <Exclude>
+      [CK.Rest.Common]*
+    </Exclude>
+    <ExcludeByFile>
+      **/Program.cs
+      **/Startup.cs
+    </ExcludeByFile>
+  </PropertyGroup>
+
+  <Import Project="..\quality.targets" />
+</Project>

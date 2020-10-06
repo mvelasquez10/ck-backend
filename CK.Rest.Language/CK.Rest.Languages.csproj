@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>9ef41af8-b9e6-4044-b21c-3f7b831f2873</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CK.Rest.Common\CK.Rest.Common.csproj" />
+    <ProjectReference Include="..\CK.Rest.Languages.Shared\CK.Rest.Languages.Shared.csproj" />
+  </ItemGroup>
+
+  <Import Project="../quality.targets" />
+</Project>
