@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   
 	<PropertyGroup>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 	</PropertyGroup>
   
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -11,6 +11,22 @@
   
 	<ItemGroup>
 	  <ProjectReference Include="..\CK.Data\CK.Entities.csproj" />
+	</ItemGroup>	
+  
+	<ItemGroup>
+	  <PackageReference Include="coverlet.collector" Version="6.0.4">
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	    <PrivateAssets>all</PrivateAssets>
+	  </PackageReference>
+	  <PackageReference Include="Karambolo.Extensions.Logging.File" Version="3.6.3" />
+	  <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.3.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+	  <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.8" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="9.0.8" />
+	  <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.8" />
+	  <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.8" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.8" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.8" />
 	</ItemGroup>  
   
   <Import Project="..\quality.targets" />

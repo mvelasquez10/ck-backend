@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Data;
@@ -212,7 +212,7 @@ namespace CK.Repository.SQLite
                 {
                     var (clause, parameters) = filter.ResolveFilter<T, TKey>(GetFilterResolver);
 
-                    query.Append($" {(isFirst ? string.Empty : "AND ")} {clause} ");
+                    query.Append(CultureInfo.InvariantCulture, $" {(isFirst ? string.Empty : "AND ")} {clause} ");
 
                     foreach (var parameter in parameters)
                     {
@@ -235,18 +235,19 @@ namespace CK.Repository.SQLite
                     query.Append(" AND ");
                 }
 
-                query.Append($" {nameof(Entity<TKey>.IsActive)} = {Convert.ToBoolean((int)status)} ");
+                query.Append(CultureInfo.InvariantCulture, $" {nameof(Entity<TKey>.IsActive)} = {Convert.ToBoolean((int)status)} ");
             }
 
             query.Append(
+                CultureInfo.InvariantCulture,
                 $"ORDER BY " +
                 $"  {nameof(Entity<TKey>.Id)} {(desc ? "DESC" : "ASC")} ");
 
             if (take > 0)
             {
-                query.Append($"LIMIT {take}");
+                query.Append(CultureInfo.InvariantCulture, $"LIMIT {take}");
                 if (skip > 0)
-                    query.Append($" OFFSET {skip}");
+                    query.Append(CultureInfo.InvariantCulture, $" OFFSET {skip}");
             }
 
             return (query.ToString(), sqliteParameters);
