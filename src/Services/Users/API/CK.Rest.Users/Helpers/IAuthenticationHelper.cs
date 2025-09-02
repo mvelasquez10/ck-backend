@@ -1,4 +1,4 @@
-﻿using CK.Rest.Users.Form;
+using CK.Rest.Users.Shared.Forms;
 
 namespace CK.Rest.Users.Helpers
 {

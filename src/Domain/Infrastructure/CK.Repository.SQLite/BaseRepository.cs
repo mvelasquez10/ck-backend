@@ -118,6 +118,25 @@ namespace CK.Repository.SQLite
             }
         }
 
+        public override Result<T> Delete(TKey id)
+        {
+            try
+            {
+                ExecuteNonQuery(
+                    $"DELETE FROM {GetTableName} WHERE {nameof(Entity<TKey>.Id)} = @Id",
+                    new List<SqliteParameter>
+                    {
+                        new SqliteParameter("@Id", id),
+                    });
+
+                return new Result<T>((T)null);
+            }
+            catch (Exception ex)
+            {
+                return new Result<T>(ex);
+            }
+        }
+
         #endregion Public Methods
 
         #region Protected Methods

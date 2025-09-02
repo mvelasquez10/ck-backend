@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
   <DataCollectionRunSettings>
     <DataCollectors>
@@ -11,20 +11,17 @@
                 <ModulePath>.*\.exe$</ModulePath>
               </Include>
               <Exclude>
-                <ModulePath>.*.tests.dll$</ModulePath>
+                <ModulePath>.*\.tests\.dll$</ModulePath>
+                <ModulePath>.*CK\.Rest\.Proxy\.Tests.*</ModulePath>
               </Exclude>
             </ModulePaths>
-            <Functions>
-              <Exclude>
-              </Exclude>
-            </Functions>
-            <UseVerifiableInstrumentation>True</UseVerifiableInstrumentation>
-            <AllowLowIntegrityProcesses>True</AllowLowIntegrityProcesses>
-            <CollectFromChildProcesses>True</CollectFromChildProcesses>
-            <CollectAspDotNet>False</CollectAspDotNet>
           </CodeCoverage>
         </Configuration>
       </DataCollector>
     </DataCollectors>
   </DataCollectionRunSettings>
+  <!-- Test run configuration -->
+  <RunConfiguration>
+    <TestCaseFilter>FullyQualifiedName!~CK.Rest.Proxy.Tests</TestCaseFilter>
+  </RunConfiguration>
 </RunSettings>

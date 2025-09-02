@@ -36,7 +36,8 @@
     }
   },
   "Common": {
-    "Secret": "UkDww4hkFnc8EfWxVS1Z"
+    "Secret": "a-very-long-and-secure-secret-key-that-is-at-least-256-bits",
+    "KeyId": "my-super-secret-key-id"
   },
   "SessionExpireInDays": 30
 }

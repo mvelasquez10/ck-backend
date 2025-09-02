@@ -1,4 +1,4 @@
-﻿using System.Collections.Immutable;
+using System.Collections.Immutable;
 
 using CK.Entities;
 
@@ -37,6 +37,8 @@ namespace CK.Repository
             ushort skip = 0,
             Status status = Status.All,
             bool desc = false);
+
+        public abstract Result<T> Delete(TKey id);
 
         #endregion Public Methods
     }

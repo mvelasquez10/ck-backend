@@ -1,4 +1,4 @@
-﻿namespace CK.Rest.Users.Form
+namespace CK.Rest.Users.Shared.Forms
 {
     public class UserResultForm
     {

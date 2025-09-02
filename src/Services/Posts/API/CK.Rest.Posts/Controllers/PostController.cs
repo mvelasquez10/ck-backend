@@ -1,4 +1,4 @@
-﻿using System.Collections.Immutable;
+using System.Collections.Immutable;
 using System.Linq;
 
 using CK.Entities;
@@ -60,6 +60,7 @@ namespace CK.Rest.Posts.Controllers
         // GET: api/Post/5
         [HttpGet("{id}", Name = "Get")]
         [AllowAnonymous]
+
         public IActionResult Get(uint id)
         {
             return GetEntity(id);
@@ -84,6 +85,13 @@ namespace CK.Rest.Posts.Controllers
             }
 
             return Put<PostFormPut>(id, form);
+        }
+
+        // DELETE: api/Post/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(uint id)
+        {
+            return DeleteEntity(id);
         }
 
         #endregion Public Methods

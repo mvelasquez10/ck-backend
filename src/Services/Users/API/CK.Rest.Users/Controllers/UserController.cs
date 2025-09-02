@@ -1,4 +1,4 @@
-﻿using System.Collections.Immutable;
+using System.Collections.Immutable;
 using System.Linq;
 
 using CK.Entities;
@@ -88,6 +88,19 @@ namespace CK.Rest.Users.Controllers
             }
 
             return Put<UserFormPut>(id, form);
+        }
+
+        // DELETE: api/User/5
+        [HttpDelete("{id}")]
+        [Authorize(Roles = Role.Admin)]
+        public IActionResult Delete(uint id)
+        {
+            if (User.GetId() == id)
+            {
+                return Forbid();
+            }
+
+            return DeleteEntity(id);
         }
 
         #endregion Public Methods

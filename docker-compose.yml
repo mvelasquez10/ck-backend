@@ -1,0 +1,60 @@
+services:
+  ck.rest.proxy:
+    image: ${DOCKER_REGISTRY-}ckrestproxy
+    build:
+      context: .
+      dockerfile: src/ApiGateway/CK.Rest.Proxy/Dockerfile
+    ports:
+      - "8080:8080"
+      - "8081:443"
+    volumes:
+      - db_data:/app/Repository
+      - dp_keys:/root/.aspnet/DataProtection-Keys
+    depends_on:
+      - ck.rest.languages
+      - ck.rest.posts
+      - ck.rest.users
+    links:
+      - ck.rest.languages
+      - ck.rest.posts
+      - ck.rest.users
+
+  ck.rest.languages:
+    image: ${DOCKER_REGISTRY-}ckrestlanguages
+    build:
+      context: .
+      dockerfile: src/Services/Language/API/CK.Rest.Language/Dockerfile
+    ports:
+      - "8082:8080"
+    volumes:
+      - db_data:/app/Repository
+      - dp_keys:/root/.aspnet/DataProtection-Keys
+    user: root
+
+  ck.rest.posts:
+    image: ${DOCKER_REGISTRY-}ckrestposts
+    build:
+      context: .
+      dockerfile: src/Services/Posts/API/CK.Rest.Posts/Dockerfile
+    ports:
+      - "8083:8080"
+    volumes:
+      - db_data:/app/Repository
+      - dp_keys:/root/.aspnet/DataProtection-Keys
+    user: root
+
+  ck.rest.users:
+    image: ${DOCKER_REGISTRY-}ckrestusers
+    build:
+      context: .
+      dockerfile: src/Services/Users/API/CK.Rest.Users/Dockerfile
+    ports:
+      - "8084:8080"
+    volumes:
+      - db_data:/app/Repository
+      - dp_keys:/root/.aspnet/DataProtection-Keys
+    user: root
+
+volumes:
+  db_data:
+  dp_keys:

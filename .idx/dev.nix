@@ -7,13 +7,16 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.dotnet-sdk_8
-    # pkgs.go
+    pkgs.docker
+    pkgs.docker-compose
+    pkgs.sqlite
     # pkgs.python311
     # pkgs.python311Packages.pip
     # pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
   ];
 
+  services.docker.enable = true;
   # Sets environment variables in the workspace
   env = {};
   idx = {

@@ -2,7 +2,6 @@ using CK.Rest.Common.Filters;
 using CK.Rest.Common.Shared.Forms;
 using CK.Rest.TestsBase;
 using CK.Rest.Users.Controllers;
-using CK.Rest.Users.Form;
 using CK.Rest.Users.Helpers;
 using CK.Rest.Users.Shared.Forms;
 

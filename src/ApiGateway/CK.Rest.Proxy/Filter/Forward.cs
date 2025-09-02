@@ -1,9 +1,11 @@
-﻿using System;
+using System;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,8 +25,6 @@ namespace CK.Rest.Proxy.Filter
         }
 
         #endregion Public Constructors
-
-        #region Private Classes
 
         private class ForwardImp : ActionFilterAttribute
         {
@@ -48,9 +48,8 @@ namespace CK.Rest.Proxy.Filter
 
             #region Public Methods
 
-            public override void OnActionExecuting(ActionExecutingContext context)
+            public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
             {
-                base.OnActionExecuting(context);
                 try
                 {
                     var proxy = new UriBuilder(new Uri(_config[$"Proxies:{(string)context.RouteData.Values["Controller"]}"]))
@@ -71,13 +70,22 @@ namespace CK.Rest.Proxy.Filter
                     {
                         AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate,
                     });
-                    var result = client.SendAsync(CreateProxiedHttpRequest(context.HttpContext, proxy.Uri, content)).Result;
-                    var response = new ObjectResult(result.Content?.ReadAsStringAsync().Result) { StatusCode = (int)result.StatusCode };
+                    var request = CreateProxiedHttpRequest(context.HttpContext, proxy.Uri, content);
+
+                    _logger.LogInformation($"Forwarding request: {request}");
+                    if (request.Content != null)
+                    {
+                        _logger.LogInformation($"Forwarding request content: {await request.Content.ReadAsStringAsync()}");
+                    }
+
+                    var result = await client.SendAsync(request);
+                    var response = new ObjectResult(await result.Content?.ReadAsStringAsync()) { StatusCode = (int)result.StatusCode };
                     context.Result = response;
                 }
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, ex.Message);
+                    context.Result = new StatusCodeResult(StatusCodes.Status502BadGateway);
                 }
             }
 
@@ -93,7 +101,9 @@ namespace CK.Rest.Proxy.Filter
 
                 if (content != null)
                 {
-                    requestMessage.Content = new StringContent(JsonSerializer.Serialize(content), Encoding.UTF8, context.Request.ContentType);
+                    var json = JsonSerializer.Serialize(content);
+                    var requestContent = new StringContent(json, Encoding.UTF8, "application/json");
+                    requestMessage.Content = requestContent;
                 }
 
                 foreach (var header in context.Request.Headers)
@@ -109,7 +119,5 @@ namespace CK.Rest.Proxy.Filter
 
             #endregion Private Methods
         }
-
-        #endregion Private Classes
     }
 }

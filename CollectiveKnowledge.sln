@@ -1,23 +1,23 @@
-
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17.14.13
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{7F66D4CA-A40B-497E-A8A6-E5EA8DB6CF66}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Entities", "src/Domain/Data/CK.Data/CK.Entities.csproj", "{538220D5-F4E3-4B6C-907B-6016E891E5CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Entities", "src\Domain\Data\CK.Data\CK.Entities.csproj", "{538220D5-F4E3-4B6C-907B-6016E891E5CB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Entities.Tests", "test/Domain/Data/CK.Data.Tests/CK.Entities.Tests.csproj", "{7386A0DE-42AE-4011-9E29-3AC1B77309D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Entities.Tests", "test\Domain\Data\CK.Data.Tests\CK.Entities.Tests.csproj", "{7386A0DE-42AE-4011-9E29-3AC1B77309D9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repositories", "Repositories", "{B14C27C2-14BD-461A-A281-531F72AFA938}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{3C806E5E-93A0-4FFC-87B0-E60662EE9C61}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Repository.SQLite", "src/Domain/Infrastructure/CK.Repository.SQLite/CK.Repository.SQLite.csproj", "{E7582F08-6C4F-453A-A6BF-CB70045DDAEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Repository.SQLite", "src\Domain\Infrastructure\CK.Repository.SQLite\CK.Repository.SQLite.csproj", "{E7582F08-6C4F-453A-A6BF-CB70045DDAEA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Repository.SQLite.Tests", "test/Domain/Infrastructure/CK.Repository.SQLite.Tests/CK.Repository.SQLite.Tests.csproj", "{35518D2C-5029-46C9-B179-7ADDB80C4525}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Repository.SQLite.Tests", "test\Domain\Infrastructure\CK.Repository.SQLite.Tests\CK.Repository.SQLite.Tests.csproj", "{35518D2C-5029-46C9-B179-7ADDB80C4525}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Repository", "src/Domain/Data/CK.Repository/CK.Repository.csproj", "{267B6671-6E59-42F9-B453-5AFB9B4D5507}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Repository", "src\Domain\Data\CK.Repository\CK.Repository.csproj", "{267B6671-6E59-42F9-B453-5AFB9B4D5507}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entities", "Entities", "{1BA56EAA-1F5A-44B1-8E02-FF42F587EC27}"
 EndProject
@@ -25,35 +25,41 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{49
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rest", "Rest", "{30F2B65A-A917-4516-AA99-20C7DC380726}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Users", "src/Services/Users/API/CK.Rest.Users/CK.Rest.Users.csproj", "{8AAA2E71-264F-4B67-A576-34F1C2F6D6F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Users", "src\Services\Users\API\CK.Rest.Users\CK.Rest.Users.csproj", "{8AAA2E71-264F-4B67-A576-34F1C2F6D6F3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Common", "src/Services/Common/API/CK.Rest.Common/CK.Rest.Common.csproj", "{E411D779-BA60-481B-9A06-269DEAAAE6C3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Common", "src\Services\Common\API\CK.Rest.Common\CK.Rest.Common.csproj", "{E411D779-BA60-481B-9A06-269DEAAAE6C3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{739A8BF8-B039-4C5B-A2B4-F362B5A3ECBC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Users.Tests", "test/Services/Users/CK.Rest.Users.Tests/CK.Rest.Users.Tests.csproj", "{04174F7B-2DFE-47DE-9CAC-0EE9A754A354}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Users.Tests", "test\Services\Users\CK.Rest.Users.Tests\CK.Rest.Users.Tests.csproj", "{04174F7B-2DFE-47DE-9CAC-0EE9A754A354}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Languages", "src/Services/Language/API/CK.Rest.Language/CK.Rest.Languages.csproj", "{2F6DE0D7-0FD0-4908-B5EB-8A09A5E1AF6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Languages", "src\Services\Language\API\CK.Rest.Language\CK.Rest.Languages.csproj", "{2F6DE0D7-0FD0-4908-B5EB-8A09A5E1AF6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Languages.Tests", "test/Services/Language/CK.Rest.Languages.Tests/CK.Rest.Languages.Tests.csproj", "{C509DBCC-6D06-4B9C-B15B-F1B80B95D823}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Languages.Tests", "test\Services\Language\CK.Rest.Languages.Tests\CK.Rest.Languages.Tests.csproj", "{C509DBCC-6D06-4B9C-B15B-F1B80B95D823}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.TestsBase", "test/TestBase/CK.Rest.TestsBase/CK.Rest.TestsBase.csproj", "{181FAE2E-25C2-4971-A14C-B1E5F229A888}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.TestsBase", "test\TestBase\CK.Rest.TestsBase\CK.Rest.TestsBase.csproj", "{181FAE2E-25C2-4971-A14C-B1E5F229A888}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Posts", "src/Services/Posts/API/CK.Rest.Posts/CK.Rest.Posts.csproj", "{D870FCEF-948E-4733-A4E9-C0BD1A105C3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Posts", "src\Services\Posts\API\CK.Rest.Posts\CK.Rest.Posts.csproj", "{D870FCEF-948E-4733-A4E9-C0BD1A105C3C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Posts.Tests", "test/Services/Posts/CK.Rest.Posts.Tests/CK.Rest.Posts.Tests.csproj", "{02F28621-B611-44DA-B735-3377B4D88028}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Posts.Tests", "test\Services\Posts\CK.Rest.Posts.Tests\CK.Rest.Posts.Tests.csproj", "{02F28621-B611-44DA-B735-3377B4D88028}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Proxy", "src/ApiGateway/CK.Rest.Proxy/CK.Rest.Proxy.csproj", "{40AAE235-950C-42D8-9A6E-DCF261881999}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Proxy", "src\ApiGateway\CK.Rest.Proxy\CK.Rest.Proxy.csproj", "{40AAE235-950C-42D8-9A6E-DCF261881999}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Languages.Shared", "src/Services/Language/Contracts/CK.Rest.Languages.Shared/CK.Rest.Languages.Shared.csproj", "{EB294A07-950E-4765-9E9C-3127AAD36FD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Languages.Shared", "src\Services\Language\Contracts\CK.Rest.Languages.Shared\CK.Rest.Languages.Shared.csproj", "{EB294A07-950E-4765-9E9C-3127AAD36FD3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Posts.Shared", "src/Services/Posts/Contracts/CK.Rest.Posts.Shared/CK.Rest.Posts.Shared.csproj", "{6BF385A3-05E9-4D6A-A97D-9AFC2BEDB8DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Posts.Shared", "src\Services\Posts\Contracts\CK.Rest.Posts.Shared\CK.Rest.Posts.Shared.csproj", "{6BF385A3-05E9-4D6A-A97D-9AFC2BEDB8DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Common.Shared", "src/Services/Common/Contracts/CK.Rest.Common.Shared/CK.Rest.Common.Shared.csproj", "{42779062-33F6-4C1B-AE3D-8DBE03061E86}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Common.Shared", "src\Services\Common\Contracts\CK.Rest.Common.Shared\CK.Rest.Common.Shared.csproj", "{42779062-33F6-4C1B-AE3D-8DBE03061E86}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Users.Shared", "src/Services/Users/Contracts/CK.Rest.Users.Shared/CK.Rest.Users.Shared.csproj", "{C3A02C22-E7F5-41BF-80AD-22DAD8645D08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Users.Shared", "src\Services\Users\Contracts\CK.Rest.Users.Shared\CK.Rest.Users.Shared.csproj", "{C3A02C22-E7F5-41BF-80AD-22DAD8645D08}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Common.Tests", "test/Services/Common/CK.Rest.Common.Tests/CK.Rest.Common.Tests.csproj", "{D78D2664-8CE5-48C2-97F8-92644410EC8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CK.Rest.Common.Tests", "test\Services\Common\CK.Rest.Common.Tests\CK.Rest.Common.Tests.csproj", "{D78D2664-8CE5-48C2-97F8-92644410EC8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B7231BA5-8A04-46C4-8FC8-5F931F68CF21}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{8459A8D6-32D4-42DD-AFD2-14801D006394}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CK.Rest.Proxy.Tests", "test\ApiGateway\CK.Rest.Proxy.Tests\CK.Rest.Proxy.Tests.csproj", "{C491A024-0ED9-486C-A059-A4688F3B67EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -130,6 +136,10 @@ Global
 		{D78D2664-8CE5-48C2-97F8-92644410EC8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D78D2664-8CE5-48C2-97F8-92644410EC8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D78D2664-8CE5-48C2-97F8-92644410EC8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C491A024-0ED9-486C-A059-A4688F3B67EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C491A024-0ED9-486C-A059-A4688F3B67EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C491A024-0ED9-486C-A059-A4688F3B67EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C491A024-0ED9-486C-A059-A4688F3B67EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -159,6 +169,8 @@ Global
 		{42779062-33F6-4C1B-AE3D-8DBE03061E86} = {30F2B65A-A917-4516-AA99-20C7DC380726}
 		{C3A02C22-E7F5-41BF-80AD-22DAD8645D08} = {30F2B65A-A917-4516-AA99-20C7DC380726}
 		{D78D2664-8CE5-48C2-97F8-92644410EC8F} = {739A8BF8-B039-4C5B-A2B4-F362B5A3ECBC}
+		{8459A8D6-32D4-42DD-AFD2-14801D006394} = {B7231BA5-8A04-46C4-8FC8-5F931F68CF21}
+		{C491A024-0ED9-486C-A059-A4688F3B67EB} = {8459A8D6-32D4-42DD-AFD2-14801D006394}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {64C7AFBB-C77C-45F2-8C38-6B0DCEA6FF2E}

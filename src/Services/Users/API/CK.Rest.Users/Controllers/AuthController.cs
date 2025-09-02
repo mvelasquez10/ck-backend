@@ -1,4 +1,4 @@
-﻿using CK.Rest.Common.Shared;
+using CK.Rest.Common.Shared;
 using CK.Rest.Common.Shared.Forms;
 using CK.Rest.Users.Helpers;
 using CK.Rest.Users.Shared.Forms;
@@ -10,7 +10,6 @@ namespace CK.Rest.Users.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
     public class AuthController : Controller, IAuthController
     {
         #region Private Fields
@@ -31,6 +30,7 @@ namespace CK.Rest.Users.Controllers
         #region Public Methods
 
         [HttpGet]
+        [Authorize]
         public IActionResult IsAuthenticate()
         {
             return User.Identity.IsAuthenticated ? Ok() : (IActionResult)Unauthorized("Invalid user or credentials");

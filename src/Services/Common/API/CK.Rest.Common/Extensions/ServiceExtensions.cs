@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Text;
 
@@ -23,6 +23,7 @@ namespace CK.Rest.Common.Extensions
         public static void AddAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             var key = Encoding.UTF8.GetBytes(configuration["Common:Secret"]);
+            var keyId = configuration["Common:KeyId"];
 
             services.AddAuthentication(x =>
             {
@@ -36,7 +37,7 @@ namespace CK.Rest.Common.Extensions
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    IssuerSigningKey = new SymmetricSecurityKey(key) { KeyId = keyId },
                     ValidateIssuer = false,
                     ValidateAudience = false,
                     ValidateLifetime = true,

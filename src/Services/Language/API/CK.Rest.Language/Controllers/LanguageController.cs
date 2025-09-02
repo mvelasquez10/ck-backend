@@ -1,4 +1,4 @@
-﻿using System.Collections.Immutable;
+using System.Collections.Immutable;
 using System.Linq;
 
 using CK.Entities;
@@ -65,6 +65,14 @@ namespace CK.Rest.Languages.Controllers
         public IActionResult Put(uint id, [FromBody] LanguageFormPut form)
         {
             return Put<LanguageFormPut>(id, form);
+        }
+
+        // DELETE: api/Language/5
+        [HttpDelete("{id}")]
+        [Authorize(Roles = Role.Admin)]
+        public IActionResult Delete(uint id)
+        {
+            return DeleteEntity(id);
         }
 
         #endregion Public Methods

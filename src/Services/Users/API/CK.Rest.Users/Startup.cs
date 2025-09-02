@@ -3,7 +3,9 @@ using CK.Repository;
 using CK.Rest.Common.Factories;
 using CK.Rest.Common.Setup;
 using CK.Rest.Users.Helpers;
-
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -28,6 +30,16 @@ namespace CK.Rest.Users
             base.ConfigureServices(services);
             services.AddScoped(f => GetRepository());
             services.AddScoped<IAuthenticationHelper, AuthenticationHelper>();
+        }
+
+        public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto,
+            });
+
+            base.Configure(app, env);
         }
 
         #endregion Public Methods
