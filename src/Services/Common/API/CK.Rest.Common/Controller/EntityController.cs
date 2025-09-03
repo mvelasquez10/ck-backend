@@ -105,6 +105,19 @@ namespace CK.Rest.Common.Controller
             return Ok(result.Value.Show(this.IsAdmin()));
         }
 
+        protected IActionResult DeleteEntity(TKey id)
+        {
+            var result = Repository.Delete(id);
+
+            if (!result.IsValid)
+                return UnprocessableEntity(result.Exception.Message);
+
+            if (result.Value is null)
+                return NotFound(id);
+
+            return Ok(result.Value.Show(this.IsAdmin()));
+        }
+
         #endregion Protected Methods
     }
 }

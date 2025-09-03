@@ -3,11 +3,8 @@ using System.IO;
 using System.Reflection;
 using System.Text.Json.Serialization;
 
-using CK.Rest.Proxy.Filter;
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -36,7 +33,7 @@ namespace CK.Rest.Proxy
 
         #region Public Methods
 
-        public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -72,25 +69,20 @@ namespace CK.Rest.Proxy
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapReverseProxy();
             });
         }
 
-        public static void ConfigureServices(IServiceCollection services)
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-            services.AddMvc()
-            .ConfigureApiBehaviorOptions(options =>
-            {
-                options.SuppressMapClientErrors = true;
-            });
-            services.AddControllers();
-
-            services.AddControllersWithViews()
+            services.AddControllers()
                 .AddJsonOptions(options =>
-                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+                    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
-            services.AddScoped<Forward>();
+            services.AddReverseProxy()
+                .LoadFromConfig(Configuration.GetSection("ReverseProxy"));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CK API", Version = "v1" });

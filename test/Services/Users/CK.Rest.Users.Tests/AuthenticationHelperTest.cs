@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 using CK.Rest.Users.Helpers;
 
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Assert = Xunit.Assert;
@@ -18,6 +19,8 @@ namespace CK.Rest.Users.Tests
 
         private const string PassAdmin = "admin1";
 
+        private readonly ILogger<AuthenticationHelper> _logger = new LoggerFactory().CreateLogger<AuthenticationHelper>();
+
         #endregion Private Fields
 
         #region Public Methods
@@ -27,7 +30,7 @@ namespace CK.Rest.Users.Tests
         {
             // Arrange
             var userRepo = UserControllerTest.GetMockRepo();
-            var repo = new AuthenticationHelper(userRepo, GetConfiguration());
+            var repo = new AuthenticationHelper(userRepo, GetConfiguration(), _logger);
             var user = userRepo.GetById(1).Value;
 
             // Act
@@ -46,7 +49,7 @@ namespace CK.Rest.Users.Tests
         public void CannotAuthenticateEmptyParameters()
         {
             // Arrange
-            var repo = new AuthenticationHelper(UserControllerTest.GetMockRepo(), GetConfiguration());
+            var repo = new AuthenticationHelper(UserControllerTest.GetMockRepo(), GetConfiguration(), _logger);
 
             // Act
             var result = repo.Authenticate(string.Empty, string.Empty);
@@ -59,7 +62,7 @@ namespace CK.Rest.Users.Tests
         public void CannotAuthenticateInvalidPassword()
         {
             // Arrange
-            var repo = new AuthenticationHelper(UserControllerTest.GetMockRepo(), GetConfiguration());
+            var repo = new AuthenticationHelper(UserControllerTest.GetMockRepo(), GetConfiguration(), _logger);
 
             // Act
             var result = repo.Authenticate(EmailAdmin, "Not my password");
@@ -72,7 +75,7 @@ namespace CK.Rest.Users.Tests
         public void CannotAuthenticateInvalidRepository()
         {
             // Arrange
-            var repo = new AuthenticationHelper(UserControllerTest.GetMockRepo(false), GetConfiguration());
+            var repo = new AuthenticationHelper(UserControllerTest.GetMockRepo(false), GetConfiguration(), _logger);
 
             // Act
             var result = repo.Authenticate(EmailAdmin, PassAdmin);
