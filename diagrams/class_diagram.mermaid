@@ -1,0 +1,72 @@
+---
+config:
+  layout: elk
+---
+flowchart TD
+ subgraph subGraph0["Entities (CK.Entities)"]
+    direction TB
+        E["Entity (abstract)"]
+        U["User"]
+        P["Post"]
+        L["Language"]
+  end
+ subgraph subGraph1["Repository Abstractions (CK.Repository)"]
+    direction TB
+        ER["EntityRepository (abstract)"]
+  end
+ subgraph subGraph2["Domain Layer (Core Abstractions & Entities)"]
+        subGraph0
+        subGraph1
+  end
+ subgraph subGraph3["Repository Implementations (CK.Repository.SQLite)"]
+    direction TB
+        BR["BaseRepository (abstract)"]
+        SUR["SqliteUserRepository"]
+        SPR["SqlitePostRepository"]
+        SLR["SqliteLanguageRepository"]
+  end
+ subgraph subGraph4["Infrastructure Layer (Concrete Implementations)"]
+        subGraph3
+  end
+ subgraph subGraph5["Common Service Library (CK.Rest.Common)"]
+    direction TB
+        EC["EntityController (abstract)"]
+        F["Factories, Extensions, etc."]
+  end
+ subgraph subGraph6["Users Service (CK.Rest.Users)"]
+        UC["UserController"]
+        AC["AuthController"]
+  end
+ subgraph subGraph7["Posts Service (CK.Rest.Posts)"]
+        PC["PostController"]
+  end
+ subgraph subGraph8["Languages Service (CK.Rest.Languages)"]
+        LC["LanguageController"]
+  end
+ subgraph subGraph9["Concrete Microservices"]
+    direction TB
+        subGraph6
+        subGraph7
+        subGraph8
+  end
+ subgraph subGraph10["Service Layer (Application & API)"]
+        subGraph5
+        subGraph9
+  end
+    E -- Inherits --> U & P & L
+    ER -- Inherits --> BR
+    BR -- Inherits --> SUR & SPR & SLR
+    EC -- Inherits --> UC & PC & LC
+    UC -..-> SUR
+    AC -..-> SUR
+    PC -..-> SPR
+    LC -..-> SLR
+    EC -..-> ER
+    SUR -..-> U
+    SPR -..-> P
+    SLR -..-> L
+     E:::abstract
+     ER:::abstract
+     BR:::abstract
+     EC:::abstract
+    classDef abstract fill:#f9f,stroke:#333,stroke-width:2px

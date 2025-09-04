@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant AdminUser as Admin User
+    participant Browser
+    participant API_Gateway
+    participant Users_Service
+    participant Database
+
+    AdminUser->>Browser: Fills out new user form (email, name, etc.)
+    Browser->>API_Gateway: POST /users (with Admin JWT and user data)
+    API_Gateway->>Users_Service: Forward POST request
+    Users_Service->>Database: Check if email already exists
+    Database-->>Users_Service: Email does not exist
+    Users_Service->>Users_Service: Hash user password
+    Users_Service->>Database: INSERT new user
+    Database-->>Users_Service: Return created user with new ID
+    Users_Service-->>API_Gateway: 201 Created (new user data)
+    API_Gateway-->>Browser: 201 Created (new user data)
+    Browser-->>AdminUser: Display success message

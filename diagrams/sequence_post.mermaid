@@ -1,0 +1,15 @@
+sequenceDiagram
+    participant User
+    participant Browser
+    participant API_Gateway
+    participant Posts_Service
+    participant Database
+
+    User->>Browser: Fills out post form (title, content, etc.)
+    Browser->>API_Gateway: POST /posts (with JWT and post data)
+    API_Gateway->>Posts_Service: Forward POST request
+    Posts_Service->>Database: INSERT new post for the user
+    Database-->>Posts_Service: Return created post with new ID
+    Posts_Service-->>API_Gateway: 201 Created (new post)
+    API_Gateway-->>Browser: 201 Created (new post)
+    Browser-->>User: Display success message and new post

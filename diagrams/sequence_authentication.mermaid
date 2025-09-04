@@ -1,0 +1,26 @@
+sequenceDiagram
+    participant User
+    participant Browser
+    participant API_Gateway
+    participant Users_Service
+    participant Auth_Service
+    participant Database
+
+    User->>Browser: Enters credentials
+    Browser->>API_Gateway: POST /login
+    API_Gateway->>Users_Service: POST /login
+    Users_Service->>Auth_Service: Authenticate(credentials)
+    Auth_Service->>Database: GetUser(username)
+    Database-->>Auth_Service: User data
+    alt User is valid
+        Auth_Service->>Auth_Service: Generate JWT
+        Auth_Service-->>Users_Service: JWT
+        Users_Service-->>API_Gateway: JWT
+        API_Gateway-->>Browser: JWT
+        Browser-->>User: Logged in
+    else User is invalid
+        Auth_Service-->>Users_Service: Authentication failed
+        Users_Service-->>API_Gateway: 401 Unauthorized
+        API_Gateway-->>Browser: 401 Unauthorized
+        Browser-->>User: Login failed
+    end

@@ -12,7 +12,6 @@
               </Include>
               <Exclude>
                 <ModulePath>.*\.tests\.dll$</ModulePath>
-                <ModulePath>.*CK\.Rest\.Proxy\.Tests.*</ModulePath>
               </Exclude>
             </ModulePaths>
           </CodeCoverage>
@@ -20,8 +19,4 @@
       </DataCollector>
     </DataCollectors>
   </DataCollectionRunSettings>
-  <!-- Test run configuration -->
-  <RunConfiguration>
-    <TestCaseFilter>FullyQualifiedName!~CK.Rest.Proxy.Tests</TestCaseFilter>
-  </RunConfiguration>
 </RunSettings>

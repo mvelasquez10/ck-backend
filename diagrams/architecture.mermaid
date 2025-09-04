@@ -1,0 +1,28 @@
+graph TD
+    subgraph "Client"
+        A[Web Browser]
+    end
+
+    subgraph "API Gateway"
+        B[CK.Rest.Proxy]
+    end
+
+    subgraph "Services"
+        C[CK.Rest.Users]
+        D[CK.Rest.Posts]
+        E[CK.Rest.Languages]
+    end
+
+    subgraph "Domain"
+        F[CK.Repository.SQLite]
+        G[CK.Entities]
+    end
+
+    A -->> B;
+    B -->> C;
+    B -->> D;
+    B -->> E;
+    C -->> F;
+    D -->> F;
+    E -->> F;
+    F -->> G;
